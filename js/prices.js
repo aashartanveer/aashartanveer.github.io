@@ -5,17 +5,23 @@
 // If the URL is empty or the fetch fails, the prices hard-coded
 // in the HTML remain as fallback.
 // ============================================================
-const PRICES_SHEET_CSV = ""; // <- paste published Google Sheet CSV URL here
+const PRICES_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTqMMu2nv8Bw2C3KGk3CMLr0w9lFZDfdn2s4pVbOtVsMvxt18rUdbPoSieAB4FCaU_5Q_YjgsgM5rWL/pub?gid=0&single=true&output=csv";
 
 if (PRICES_SHEET_CSV) {
   fetch(PRICES_SHEET_CSV)
     .then(r => r.text())
     .then(txt => {
+      // Find any known plan key anywhere in a row; the next cell is its price.
+      const KEYS = ["starter", "growth", "dedicated"];
       const prices = {};
       txt.trim().split(/\r?\n/).forEach(line => {
-        const [k, v] = line.split(",");
-        if (k && v && !isNaN(parseFloat(v))) {
-          prices[k.trim().toLowerCase()] = v.trim();
+        const cells = line.split(",").map(c => c.trim().replace(/^"|"$/g, ""));
+        for (let i = 0; i < cells.length - 1; i++) {
+          const key = cells[i].toLowerCase();
+          const val = cells[i + 1].replace(/[^0-9.]/g, "");
+          if (KEYS.includes(key) && val && !isNaN(parseFloat(val))) {
+            prices[key] = val;
+          }
         }
       });
 
