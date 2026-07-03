@@ -406,6 +406,55 @@ section { padding: 84px 0; }
 .section-dark .section-head p { color: #a9bacd; }
 .section-dark .eyebrow { background: rgba(0, 194, 168, 0.16); color: var(--teal); }
 
+/* ---------- Companies strip ---------- */
+.logo-strip { padding: 34px 0; background: var(--white); border-bottom: 1px solid var(--line); }
+.logo-strip .label {
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 18px;
+}
+.logo-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 18px 44px; }
+.logo-row span {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #9aabc0;
+  white-space: nowrap;
+}
+.logo-row span small { display: block; font-family: var(--font-body); font-weight: 500; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: #b8c5d6; }
+
+/* ---------- Testimonials ---------- */
+.testi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; max-width: 900px; margin: 0 auto; }
+.testi-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+.stars { color: var(--amber); font-size: 1.05rem; letter-spacing: 3px; margin-bottom: 14px; }
+.testi-card blockquote { color: var(--ink); font-size: 1rem; font-style: italic; margin-bottom: 22px; flex-grow: 1; }
+.testi-meta { display: flex; align-items: center; gap: 13px; }
+.testi-avatar {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  background: var(--teal-soft); color: var(--teal-dark);
+  display: grid; place-items: center;
+  font-family: var(--font-head); font-weight: 800; font-size: 1.05rem;
+}
+.testi-meta strong { display: block; font-size: 0.95rem; color: var(--navy); }
+.testi-meta span { font-size: 0.82rem; color: var(--slate); }
+.testi-verified {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line);
+  font-size: 0.8rem; font-weight: 600; color: var(--teal-dark);
+}
+
 /* ---------- Timeline (about) ---------- */
 .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 34px; }
 .timeline::before {
@@ -697,6 +746,7 @@ section { padding: 84px 0; }
   .hero-card { max-width: 420px; margin: 0 auto; }
   .cards-grid, .pricing-grid { grid-template-columns: 1fr 1fr; }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .testi-grid { grid-template-columns: 1fr; }
   .results-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
