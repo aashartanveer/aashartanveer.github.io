@@ -37,12 +37,12 @@ if (PRICES_SHEET_CSV) {
         const labels = {
           "starter": ["Starter", "starter"],
           "growth": ["Growth", "growth"],
-          "dedicated-sdr": ["Dedicated SDR", "dedicated"]
+          "dedicated-sdr": ["Dedicated BDR", "dedicated"]
         };
         Array.from(planSelect.options).forEach(o => {
           const meta = labels[o.value];
           if (meta && prices[meta[1]]) {
-            o.textContent = meta[0] + " — $" + prices[meta[1]] + "/mo";
+            o.textContent = meta[0] + " · $" + prices[meta[1]] + "/mo";
           }
         });
       }
