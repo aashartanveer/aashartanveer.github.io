@@ -894,6 +894,53 @@ section { padding: 84px 0; }
   pointer-events: none;
 }
 
+/* --- Particle network canvas (hero / page-hero) --- */
+.hero, .page-hero { position: relative; overflow: hidden; }
+.fx-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero .container, .page-hero .container { position: relative; z-index: 1; }
+
+/* --- Parallax background shapes --- */
+.has-bg-fx { position: relative; overflow: hidden; }
+.has-bg-fx > .container { position: relative; z-index: 1; }
+.bg-shape {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+.bg-shape.ring {
+  width: 190px; height: 190px;
+  border: 2px solid rgba(0, 194, 168, 0.16);
+  border-radius: 50%;
+}
+.bg-shape.ring::after {
+  content: "";
+  position: absolute;
+  inset: 28px;
+  border: 1.5px solid rgba(2, 132, 199, 0.14);
+  border-radius: 50%;
+}
+.bg-shape.blob {
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 194, 168, 0.09), transparent 68%);
+}
+.bg-shape.dots {
+  width: 220px; height: 220px;
+  background-image: radial-gradient(rgba(0, 194, 168, 0.22) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  opacity: 0.55;
+  -webkit-mask-image: radial-gradient(circle, #000 40%, transparent 75%);
+  mask-image: radial-gradient(circle, #000 40%, transparent 75%);
+}
+.section-dark .bg-shape.ring { border-color: rgba(0, 194, 168, 0.22); }
+.section-dark .bg-shape.dots { opacity: 0.4; }
+
 /* --- Reduced motion: switch everything off --- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
