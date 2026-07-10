@@ -90,6 +90,30 @@
 
   <!-- ================= HERO ================= -->
   <section class="hero">
+    <svg class="hero-globe" viewBox="0 0 600 600" aria-hidden="true">
+      <g class="globe-spin" stroke="rgba(0,194,168,0.32)" fill="none" stroke-width="1.2">
+        <circle cx="300" cy="300" r="250"/>
+        <ellipse cx="300" cy="300" rx="250" ry="95"/>
+        <ellipse cx="300" cy="300" rx="250" ry="180"/>
+        <ellipse cx="300" cy="300" rx="95" ry="250"/>
+        <ellipse cx="300" cy="300" rx="180" ry="250"/>
+      </g>
+      <g fill="none" stroke-width="1.6">
+        <path class="globe-arc" d="M140,340 Q300,120 460,300" stroke="rgba(0,194,168,0.55)"/>
+        <path class="globe-arc" d="M180,420 Q320,240 470,380" stroke="rgba(56,189,248,0.5)"/>
+        <path class="globe-arc" d="M150,250 Q300,420 450,220" stroke="rgba(255,182,39,0.4)"/>
+      </g>
+      <g>
+        <circle r="5" fill="#00e0c0"><animateMotion dur="5.5s" repeatCount="indefinite" path="M140,340 Q300,120 460,300"/></circle>
+        <circle r="4" fill="#38bdf8"><animateMotion dur="7.5s" repeatCount="indefinite" path="M180,420 Q320,240 470,380"/></circle>
+        <circle r="4" fill="#ffb627"><animateMotion dur="9.5s" repeatCount="indefinite" path="M150,250 Q300,420 450,220"/></circle>
+      </g>
+      <g class="globe-city" fill="rgba(0,224,192,0.9)">
+        <circle cx="140" cy="340" r="4"/><circle cx="460" cy="300" r="4"/>
+        <circle cx="180" cy="420" r="4"/><circle cx="470" cy="380" r="4"/>
+        <circle cx="150" cy="250" r="4"/><circle cx="450" cy="220" r="4"/>
+      </g>
+    </svg>
     <div class="container hero-grid">
       <div>
         <span class="eyebrow">B2B Lead Generation · BDR · Business Development</span>
@@ -205,6 +229,19 @@
 
   <!-- ================= RESULTS ================= -->
   <section class="section-dark">
+    <svg class="chart-bg" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#00c2a8" stop-opacity="0.18"/>
+          <stop offset="1" stop-color="#00c2a8" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path class="chart-area" d="M0,340 L120,318 240,328 360,278 480,288 600,228 720,238 840,178 960,148 1080,88 1200,58 L1200,400 L0,400 Z" fill="url(#chartGrad)"/>
+      <path class="chart-line" d="M0,340 L120,318 240,328 360,278 480,288 600,228 720,238 840,178 960,148 1080,88 1200,58" fill="none" stroke="rgba(0,194,168,0.6)" stroke-width="2.5"/>
+      <g class="chart-points" fill="#00e0c0">
+        <circle cx="360" cy="278" r="4"/><circle cx="600" cy="228" r="4"/><circle cx="840" cy="178" r="4"/><circle cx="1080" cy="88" r="4"/>
+      </g>
+    </svg>
     <div class="container">
       <div class="section-head center reveal">
         <span class="eyebrow">Proven Results</span>
@@ -241,7 +278,13 @@
   </section>
 
   <!-- ================= PROCESS ================= -->
-  <section class="bg-soft">
+  <section class="bg-soft has-wave">
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+        <path class="wave w2" fill="rgba(0,194,168,0.10)" d="M0,55 q180,-40 360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 L2880,0 L0,0 Z"/>
+        <path class="wave w1" fill="#0a1830" d="M0,45 q180,-38 360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 L2880,0 L0,0 Z"/>
+      </svg>
+    </div>
     <div class="container">
       <div class="section-head center reveal">
         <span class="eyebrow">How It Works</span>
@@ -285,7 +328,13 @@
   </section>
 
   <!-- ================= TESTIMONIALS ================= -->
-  <section class="bg-soft">
+  <section class="bg-soft has-wave">
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+        <path class="wave w2" fill="rgba(0,194,168,0.10)" d="M0,55 q180,-40 360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 L2880,0 L0,0 Z"/>
+        <path class="wave w1" fill="#ffffff" d="M0,45 q180,-38 360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 L2880,0 L0,0 Z"/>
+      </svg>
+    </div>
     <div class="container">
       <div class="section-head center reveal">
         <span class="eyebrow">Client Reviews</span>
@@ -386,6 +435,14 @@
   <section style="padding-top:0;">
     <div class="container">
       <div class="cta-band reveal">
+        <svg class="cta-plane" viewBox="0 0 900 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path id="flightPath" class="flight-path" d="M-30,190 C180,70 400,200 620,95 S860,55 930,35" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="7 9"/>
+          <path d="M0,-7 L22,0 L0,7 L5,0 Z" fill="#00e0c0">
+            <animateMotion dur="13s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#flightPath"/>
+            </animateMotion>
+          </path>
+        </svg>
         <h2>Ready to fill your pipeline?</h2>
         <p>Book a free 30-minute strategy call. You'll leave with a concrete outbound plan for your business, whether we work together or not.</p>
         <div class="hero-ctas">
@@ -397,7 +454,13 @@
   </section>
 
   <!-- ================= FOOTER ================= -->
-  <footer class="site-footer">
+  <footer class="site-footer has-wave">
+    <div class="wave-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+        <path class="wave w2" fill="rgba(0,194,168,0.12)" d="M0,55 q180,-40 360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 L2880,0 L0,0 Z"/>
+        <path class="wave w1" fill="#ffffff" d="M0,45 q180,-38 360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 L2880,0 L0,0 Z"/>
+      </svg>
+    </div>
     <div class="container footer-grid">
       <div>
         <h4>Muhammad Aashar Tanveer</h4>
