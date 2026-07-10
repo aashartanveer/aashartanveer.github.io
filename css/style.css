@@ -706,7 +706,7 @@ section { padding: 84px 0; }
 .wa-float svg { width: 30px; height: 30px; fill: #fff; }
 
 /* ---------- Reveal animation ---------- */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal { opacity: 0; transform: translateY(32px) scale(0.98); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
 .reveal.visible { opacity: 1; transform: none; }
 
 /* ---------- Page hero (inner pages) ---------- */
@@ -720,6 +720,190 @@ section { padding: 84px 0; }
 }
 .page-hero h1 { color: var(--white); font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 14px; }
 .page-hero p { color: #b9c7d9; max-width: 640px; margin: 0 auto; font-size: 1.08rem; }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes heroCardIn {
+  from { opacity: 0; transform: translateY(44px) scale(0.95); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes blobDrift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-70px, 50px) scale(1.18); }
+}
+@keyframes shimmer {
+  to { background-position: 300% 0; }
+}
+@keyframes marqueeScroll {
+  to { transform: translateX(-50%); }
+}
+@keyframes dotPulse {
+  0%   { box-shadow: 0 0 0 2px var(--teal), 0 0 0 2px rgba(0, 194, 168, 0.45); }
+  70%  { box-shadow: 0 0 0 2px var(--teal), 0 0 0 14px rgba(0, 194, 168, 0); }
+  100% { box-shadow: 0 0 0 2px var(--teal), 0 0 0 0 rgba(0, 194, 168, 0); }
+}
+@keyframes waPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45); }
+  70%  { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* --- Scroll progress bar --- */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--teal), #0284c7);
+  z-index: 300;
+  pointer-events: none;
+}
+
+/* --- Header shrink on scroll --- */
+.site-header { transition: background 0.3s ease, box-shadow 0.3s ease; }
+.site-header.scrolled { background: rgba(7, 17, 34, 0.97); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35); }
+.nav { transition: height 0.3s ease; }
+.site-header.scrolled .nav { height: 62px; }
+
+/* --- Nav link underline --- */
+.nav-links a:not(.btn) { position: relative; }
+.nav-links a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -5px;
+  height: 2px; width: 100%;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-links a:not(.btn):hover::after,
+.nav-links a.active:not(.btn)::after { transform: scaleX(1); }
+
+/* --- Hero entrance choreography --- */
+.hero { position: relative; }
+.hero::before, .hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.28;
+  pointer-events: none;
+}
+.hero::before {
+  width: 520px; height: 520px;
+  background: var(--teal);
+  top: -220px; right: -120px;
+  animation: blobDrift 14s ease-in-out infinite alternate;
+}
+.hero::after {
+  width: 440px; height: 440px;
+  background: #0284c7;
+  bottom: -220px; left: -140px;
+  animation: blobDrift 18s ease-in-out infinite alternate-reverse;
+}
+.hero-grid { position: relative; z-index: 1; }
+
+.hero .eyebrow  { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero h1        { animation: fadeUp 0.7s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-sub       { animation: fadeUp 0.7s 0.24s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-ctas      { animation: fadeUp 0.7s 0.36s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-trust     { animation: fadeUp 0.7s 0.48s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.tool-badges    { animation: fadeUp 0.7s 0.58s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.hero-card {
+  animation:
+    heroCardIn 0.9s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both,
+    floatY 7s ease-in-out 1.6s infinite;
+}
+
+/* --- Headline gradient shimmer --- */
+.hero h1 .hl {
+  background: linear-gradient(90deg, #00c2a8, #5ce8d2, #38bdf8, #00c2a8);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* --- Inner page hero entrance --- */
+.page-hero .eyebrow { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.page-hero h1       { animation: fadeUp 0.7s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.page-hero p        { animation: fadeUp 0.7s 0.24s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* --- Button shine sweep --- */
+.btn { position: relative; overflow: hidden; }
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -80%;
+  width: 50%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+.btn:hover::before { left: 130%; }
+
+/* --- Card micro-interactions --- */
+.card-icon { transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.card:hover .card-icon { transform: scale(1.15) rotate(-8deg); }
+.testi-card:hover { transform: translateY(-4px); transition: transform 0.25s ease, box-shadow 0.25s ease; box-shadow: var(--shadow-lg); }
+.step { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+.step:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: rgba(0, 194, 168, 0.4); }
+
+/* --- Companies marquee --- */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 26s linear infinite;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee .logo-row {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 72px;
+  padding-right: 72px;
+}
+
+/* --- Timeline dot pulse --- */
+.tl-item::before { animation: dotPulse 2.8s ease-out infinite; }
+
+/* --- WhatsApp float pulse ring --- */
+.wa-float::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: waPulse 2.5s ease-out infinite;
+  pointer-events: none;
+}
+
+/* --- Reduced motion: switch everything off --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .marquee-track { animation: none; }
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {

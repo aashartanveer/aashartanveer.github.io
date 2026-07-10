@@ -10,6 +10,21 @@ document.querySelectorAll("#year").forEach(el => {
   el.textContent = new Date().getFullYear();
 });
 
+// Sticky header state + scroll progress bar
+const header = document.querySelector(".site-header");
+const progress = document.createElement("div");
+progress.className = "scroll-progress";
+document.body.appendChild(progress);
+
+function onScroll() {
+  if (header) header.classList.toggle("scrolled", window.scrollY > 12);
+  const doc = document.documentElement;
+  const max = doc.scrollHeight - doc.clientHeight;
+  progress.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + "%";
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
 // FAQ accordion
 document.querySelectorAll(".faq-q").forEach(btn => {
   btn.addEventListener("click", () => {
@@ -27,6 +42,15 @@ document.querySelectorAll(".faq-q").forEach(btn => {
   });
 });
 
+// Staggered reveal: children of grids animate one after another
+document.querySelectorAll(".cards-grid, .steps-grid, .results-grid, .pricing-grid, .testi-grid").forEach(grid => {
+  Array.from(grid.children).forEach((child, i) => {
+    if (child.classList.contains("reveal")) {
+      child.style.transitionDelay = (i * 90) + "ms";
+    }
+  });
+});
+
 // Reveal on scroll
 const observer = new IntersectionObserver(
   entries => {
@@ -40,6 +64,34 @@ const observer = new IntersectionObserver(
   { threshold: 0.12 }
 );
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+// Animated counters: any element with data-count
+const easeOut = t => 1 - Math.pow(1 - t, 3);
+const counterObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      counterObserver.unobserve(entry.target);
+      const el = entry.target;
+      const target = parseFloat(el.dataset.count);
+      const prefix = el.dataset.prefix || "";
+      const suffix = el.dataset.suffix || "";
+      if (isNaN(target)) return;
+      const duration = 1500;
+      const start = performance.now();
+      const tick = now => {
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = prefix + Math.round(target * easeOut(p)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  },
+  { threshold: 0.6 }
+);
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.querySelectorAll("[data-count]").forEach(el => counterObserver.observe(el));
+}
 
 // Pre-select package on contact page from ?plan= query
 const planParam = new URLSearchParams(window.location.search).get("plan");
