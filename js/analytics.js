@@ -3,7 +3,7 @@
 // Paste your GA4 Measurement ID (looks like G-XXXXXXXXXX) below.
 // Until it is set, this file does nothing.
 // ============================================================
-const GA_ID = ""; // <- paste GA4 Measurement ID here
+const GA_ID = "G-JXHB2YR027";
 
 if (GA_ID) {
   const s = document.createElement("script");
