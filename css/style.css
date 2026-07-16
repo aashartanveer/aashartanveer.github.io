@@ -455,6 +455,109 @@ section { padding: 84px 0; }
   font-size: 0.8rem; font-weight: 600; color: var(--teal-dark);
 }
 
+/* ---------- Comparison table ---------- */
+.compare-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+.compare {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.compare th, .compare td {
+  padding: 15px 20px;
+  text-align: left;
+  font-size: 0.94rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--slate);
+}
+.compare thead th {
+  background: var(--navy);
+  color: var(--white);
+  font-family: var(--font-head);
+  font-size: 0.92rem;
+}
+.compare thead th.hl-col { background: var(--teal); color: #04281f; }
+.compare td.hl-col { background: rgba(0, 194, 168, 0.08); font-weight: 600; color: var(--navy); }
+.compare td:first-child { font-weight: 600; color: var(--navy); }
+.compare tbody tr:last-child td { border-bottom: none; }
+
+/* ---------- CTA availability note ---------- */
+.availability {
+  margin-top: 22px;
+  font-size: 0.9rem;
+  color: #a9bacd;
+}
+.availability .dot {
+  display: inline-block;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+  margin-right: 7px;
+}
+
+/* ---------- Case studies ---------- */
+.case-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 42px 38px;
+  margin-bottom: 36px;
+  box-shadow: var(--shadow);
+}
+.case-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  background: var(--teal-soft);
+  padding: 5px 13px;
+  border-radius: 100px;
+  margin-bottom: 14px;
+}
+.case-card h3 { font-size: 1.45rem; margin-bottom: 8px; }
+.case-card .case-sub { color: var(--slate); font-size: 0.98rem; margin-bottom: 26px; }
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.case-step {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 18px;
+}
+.case-step h4 {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal-dark);
+  margin-bottom: 9px;
+}
+.case-step p { font-size: 0.9rem; color: var(--slate); }
+.case-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.case-results span {
+  background: var(--navy);
+  color: var(--teal);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 9px 18px;
+  border-radius: 100px;
+}
+
 /* ---------- Timeline (about) ---------- */
 .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 34px; }
 .timeline::before {
@@ -1123,6 +1226,7 @@ footer.has-wave .wave-divider .w2 { fill-opacity: 0.5; }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
   .testi-grid { grid-template-columns: 1fr; }
   .results-grid { grid-template-columns: 1fr; }
+  .case-grid { grid-template-columns: 1fr 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -1135,5 +1239,7 @@ footer.has-wave .wave-divider .w2 { fill-opacity: 0.5; }
   .cta-band { padding: 48px 24px; }
   .story-photo { float: none; margin: 0 auto 26px; }
   .has-wave { padding-top: 110px; }
+  .case-grid { grid-template-columns: 1fr; }
+  .case-card { padding: 30px 24px; }
   .footer-grid { grid-template-columns: 1fr; }
 }
