@@ -669,6 +669,41 @@ section { padding: 84px 0; }
   section { padding: 10px 0; }
 }
 
+/* ---------- Resume band ---------- */
+.resume-band {
+  background:
+    radial-gradient(600px 240px at 85% -30%, rgba(0, 194, 168, 0.16), transparent 60%),
+    var(--navy);
+  border-radius: 20px;
+  padding: 40px 44px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: var(--white);
+  box-shadow: var(--shadow-lg);
+}
+.resume-icon {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: rgba(0, 194, 168, 0.14);
+  border: 1px solid rgba(0, 194, 168, 0.3);
+  display: grid;
+  place-items: center;
+}
+.resume-icon svg { width: 36px; height: 36px; }
+.resume-band .rb-text { flex-grow: 1; }
+.resume-band h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 6px; }
+.resume-band p { color: #b9c7d9; font-size: 0.97rem; margin: 0; }
+.resume-band .rb-actions { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
+
+@media (max-width: 720px) {
+  .resume-band { flex-direction: column; text-align: center; padding: 34px 24px; }
+  .resume-band .rb-actions { justify-content: center; width: 100%; }
+  .resume-band .rb-actions .btn { flex: 1; justify-content: center; }
+}
+
 /* ---------- Timeline (about) ---------- */
 .timeline { position: relative; max-width: 800px; margin: 0 auto; padding-left: 34px; }
 .timeline::before {
